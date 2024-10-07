@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Snippet Renderer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            padding-top: 20px;
+        }
+
+        .code-container {
+            background-color: rgba(30, 30, 30, 0.8);
+            color: #dcdcdc;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 50px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        pre {
+            background-color: #282c34;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+            display: block;
+            color: #61dafb;
+        }
+
+        textarea, select {
+            width: 100%;
+            padding: 10px;
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            display: inline-block;
+            margin: 10px 5px;
+            padding: 10px 20px;
+            background-color: #61dafb;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #21a1f1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Code Snippet Renderer</h1>
+    
+    <div class="code-container">
+        <textarea id="code-input" placeholder="Write your code here..."></textarea>
+        <select id="language-select">
+            <option value="python3">Python</option>
+            <option value="cpp14">C++</option>
+            <option value="java">Java</option>
+            <option value="php">PHP</option>
+            <option value="nodejs">JavaScript (Node.js)</option>
+        </select>
+        <div>
+            <button onclick="runCode()">Run Code</button>
+            <pre><code id="console-output"></code></pre>
+        </div>
+    </div>
+
+    <script>
+        async function runCode() {
+            const codeInput = document.getElementById('code-input').value;
+            const language = document.getElementById('language-select').value;
+
+            // Replace with your actual JDoodle credentials
+            const clientId = "5bf9481db41bdf059813623057143cee";
+            const clientSecret = "11b785bbaa5b2fbc0ae6a61825bcb0395d60449ea13b9177662518efbd9caa0";
+
+            const requestPayload = {
+                clientId: clientId,
+                clientSecret: clientSecret,
+                script: codeInput,
+                language: language,
+                versionIndex: "0"
+            };
+
+            try {
+                const response = await fetch('https://api.jdoodle.com/v1/execute', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestPayload)
+                });
+
+                const result = await response.json();
+                document.getElementById('console-output').textContent = result.output;
+            } catch (error) {
+                document.getElementById('console-output').textContent = 'Error: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
