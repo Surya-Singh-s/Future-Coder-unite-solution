@@ -33,7 +33,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
 
-        textarea, select {
+        textarea {
             width: 100%;
             height: 200px; /* Half screen */
             font-family: "Courier New", monospace;
@@ -73,13 +73,26 @@
         button:hover {
             background-color: #21a1f1;
         }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        #language-select {
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
     <h1>Code Snippet Renderer</h1>
     
     <div class="code-container">
+        <label for="code-input">Write your code here:</label>
         <textarea id="code-input" placeholder="Write your code here..."></textarea>
+        
+        <label for="language-select">Choose Language:</label>
         <select id="language-select">
             <option value="python3">Python</option>
             <option value="cpp14">C++</option>
@@ -87,12 +100,15 @@
             <option value="php">PHP</option>
             <option value="nodejs">JavaScript (Node.js)</option>
         </select>
+        
         <div>
             <button onclick="runCode()">Run Code</button>
             <button onclick="renderCode()">Render Code</button>
             <button onclick="copyCode()">Copy Code</button>
             <button onclick="downloadCode()">Download Code</button>
         </div>
+
+        <label>Console Output:</label>
         <pre><code id="console-output"></code></pre>
     </div>
 
