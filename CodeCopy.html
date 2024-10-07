@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Snippet Renderer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .code-container {
+            background-color: #1e1e1e;
+            color: #dcdcdc;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        pre {
+            background-color: #282c34;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+            display: block;
+            color: #61dafb;
+        }
+    </style>
+</head>
+<body>
+    <h1>Code Snippet Renderer</h1>
+    
+    <div class="code-container">
+        <pre><code>`Single-line code: print("Hello, World!")`</code></pre>
+        <pre><code>```
+def add(a, b):
+    return a + b
+```</code></pre>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const codeBlocks = document.querySelectorAll('pre code');
+
+            codeBlocks.forEach((block) => {
+                block.innerHTML = block.innerHTML
+                    .replace(/```/g, '')  // Remove backticks for multi-line code
+                    .replace(/`/g, '');  // Remove backticks for single-line code
+            });
+        });
+    </script>
+</body>
+</html>
