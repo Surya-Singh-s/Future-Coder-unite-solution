@@ -9,7 +9,7 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('background.jpg'); /* Replace with your background image URL */
+            background-image: url('background.jpg'); /* Ensure this is the correct path */
             background-size: cover;
             background-position: center;
             color: #fff;
@@ -21,14 +21,37 @@
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-in-out; /* Fade-in animation */
         }
-        h1, h2 {
-            color: #4CAF50;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        h1 {
             text-align: center;
+            color: #4CAF50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: slideIn 0.5s ease-in-out; /* Slide-in animation */
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
         p {
             font-size: 18px;
             line-height: 1.6;
+            animation: fadeIn 1s ease-in-out;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #fff; /* Change color on hover */
+            text-decoration: underline;
         }
         .links {
             margin-top: 20px;
@@ -39,27 +62,34 @@
         }
         .links li {
             margin-bottom: 10px;
+            animation: fadeIn 1.5s ease-in-out; /* Fade-in effect for links */
         }
     </style>
 </head>
 <body>
+
     <div class="container">
         <h1>Day 2 Challenge: Factorial Calculation</h1>
         <p>
-            Welcome to Day 2! Today, we are writing a function in different programming languages to calculate the factorial of a number.
+            Welcome to Day 2 of the challenge! Today, we will write functions in various programming languages to calculate the factorial of a number.
         </p>
         <p>
             The factorial of a number n (denoted as n!) is the product of all positive integers less than or equal to n. For example, the factorial of 5 is 5! = 5 × 4 × 3 × 2 × 1 = 120.
         </p>
+
         <h2>Factorial Calculation Solutions:</h2>
         <div class="links">
             <ul>
-                <li><a href="https://www.geeksforgeeks.org/c-program-to-find-factorial-of-a-number/" target="_blank">C Program for Factorial</a></li>
-                <li><a href="https://www.geeksforgeeks.org/python-program-to-find-factorial-of-a-number/" target="_blank">Python Program for Factorial</a></li>
-                <li><a href="https://www.geeksforgeeks.org/java-program-to-calculate-factorial-of-a-number/" target="_blank">Java Program for Factorial</a></li>
-                <li><a href="https://www.geeksforgeeks.org/javascript-program-to-calculate-factorial-of-a-number/" target="_blank">JavaScript Program for Factorial</a></li>
+                <li><a href="https://www.geeksforgeeks.org/cpp-program-to-find-factorial-of-a-number/" target="_blank">C++ Program for Factorial</a></li>
+                <li><a href="https://www.geeksforgeeks.org/python-program-for-factorial-of-a-number/" target="_blank">Python Program for Factorial</a></li>
+                <li><a href="https://www.geeksforgeeks.org/java-program-for-factorial-of-a-number/" target="_blank">Java Program for Factorial</a></li>
+                <li><a href="https://www.geeksforgeeks.org/factorial-of-a-number-using-javascript/" target="_blank">JavaScript Program for Factorial</a></li>
             </ul>
         </div>
+
+        <h3>Join the Tech Rise Community!</h3>
+        <p>Engage with fellow learners and share your progress.</p>
     </div>
+
 </body>
 </html>
