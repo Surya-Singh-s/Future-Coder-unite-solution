@@ -44,6 +44,7 @@
         <button id="down">Lower</button>
     </div>
     <button id="restart">Restart</button>
+    <button id="pause">Pause</button>
     <script>
         const canvas = document.getElementById("gameCanvas");
         const ctx = canvas.getContext("2d");
@@ -56,6 +57,8 @@
         let dx = 20;
         let dy = 0;
         let gameOver = false;
+        let paused = false;
+        let gameInterval;
 
         function drawGame() {
             if (gameOver) return;
@@ -91,8 +94,6 @@
                 gameOver = true;
                 alert("Game Over!");
             }
-
-            setTimeout(drawGame, 100);
         }
 
         function collision(head) {
@@ -151,8 +152,22 @@
             dx = 20;
             dy = 0;
             gameOver = false;
+            paused = false;
+            clearInterval(gameInterval);
             generateFood();
             drawGame();
+            gameInterval = setInterval(drawGame, 100);
+        }
+
+        function pauseGame() {
+            paused = !paused; // Toggle pause state
+            if (paused) {
+                clearInterval(gameInterval);
+                document.getElementById("pause").innerText = "Resume";
+            } else {
+                gameInterval = setInterval(drawGame, 100);
+                document.getElementById("pause").innerText = "Pause";
+            }
         }
 
         document.getElementById("up").addEventListener("click", controlSnake);
@@ -160,9 +175,10 @@
         document.getElementById("left").addEventListener("click", controlSnake);
         document.getElementById("right").addEventListener("click", controlSnake);
         document.getElementById("restart").addEventListener("click", restartGame);
+        document.getElementById("pause").addEventListener("click", pauseGame);
 
         generateFood();
-        drawGame();
+        gameInterval = setInterval(drawGame, 100);
     </script>
 </body>
 </html>
