@@ -42,8 +42,8 @@
         .control-buttons {
             display: flex;
             justify-content: center;
-            margin-bottom: 10px;
-            gap: 10px;
+            margin-bottom: 15px; /* Increased spacing */
+            gap: 15px; /* Increased spacing */
         }
 
         .control-button {
@@ -133,6 +133,7 @@
             y: Math.floor(Math.random() * 19 + 1) * box
         };
         let score = 0;
+        let speed = 150; // Reduced speed
 
         function draw() {
             ctx.fillStyle = '#f0f8ff';
@@ -209,7 +210,7 @@
             score = 0;
             message.textContent = '';
             clearInterval(game);
-            game = setInterval(draw, 100);
+            game = setInterval(draw, speed); // Use the adjusted speed
         }
 
         document.getElementById('upButton').addEventListener('click', () => changeDirection('UP'));
@@ -218,7 +219,7 @@
         document.getElementById('rightButton').addEventListener('click', () => changeDirection('RIGHT'));
         document.getElementById('restartButton').addEventListener('click', restartGame);
 
-        let game = setInterval(draw, 100);
+        let game = setInterval(draw, speed); // Start with the adjusted speed
     </script>
 </body>
 </html>
