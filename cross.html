@@ -62,10 +62,18 @@
             margin-top: 10px;
             font-size: 1.5em;
         }
+
+        .mode-selection {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <h1>Tic-Tac-Toe</h1>
+    <div class="mode-selection">
+        <button class="reset-button" id="twoPlayers">Play with Another Person</button>
+        <button class="reset-button" id="computer">Play with Computer</button>
+    </div>
     <div class="board" id="board"></div>
     <button class="reset-button" id="resetButton">Reset Game</button>
     <div class="message" id="message"></div>
@@ -74,10 +82,13 @@
         const board = document.getElementById('board');
         const resetButton = document.getElementById('resetButton');
         const message = document.getElementById('message');
+        const twoPlayersButton = document.getElementById('twoPlayers');
+        const computerButton = document.getElementById('computer');
 
-        let currentPlayer = 'X';
-        let gameBoard = ['', '', '', '', '', '', '', '', ''];
+        let currentPlayer;
+        let gameBoard;
         let gameActive = true;
+        let gameMode; // "twoPlayers" or "computer"
 
         function createBoard() {
             board.innerHTML = '';
@@ -96,8 +107,26 @@
             }
             gameBoard[index] = currentPlayer;
             checkResult();
-            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+
+            if (gameActive && gameMode === 'computer') {
+                currentPlayer = 'O';
+                computerMove();
+            } else {
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            }
+
             createBoard();
+        }
+
+        function computerMove() {
+            let availableMoves = gameBoard.map((cell, index) => cell === '' ? index : null).filter(index => index !== null);
+            if (availableMoves.length > 0) {
+                const randomMove = availableMoves[Math.floor(Math.random() * availableMoves.length)];
+                gameBoard[randomMove] = currentPlayer;
+                checkResult();
+                currentPlayer = 'X'; // Switch back to player X
+                createBoard();
+            }
         }
 
         function checkResult() {
@@ -127,8 +156,6 @@
             }
         }
 
-        resetButton.addEventListener('click', resetGame);
-
         function resetGame() {
             currentPlayer = 'X';
             gameBoard = ['', '', '', '', '', '', '', '', ''];
@@ -137,7 +164,22 @@
             createBoard();
         }
 
+        twoPlayersButton.addEventListener('click', () => {
+            gameMode = 'twoPlayers';
+            resetGame();
+            currentPlayer = 'X'; // Player X starts first
+        });
+
+        computerButton.addEventListener('click', () => {
+            gameMode = 'computer';
+            resetGame();
+            currentPlayer = 'X'; // Player X starts first
+        });
+
+        resetButton.addEventListener('click', resetGame);
+
         // Initialize the game board
+        gameBoard = ['', '', '', '', '', '', '', '', ''];
         createBoard();
     </script>
 </body>
