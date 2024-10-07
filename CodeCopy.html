@@ -59,8 +59,8 @@
         }
 
         button {
-            display: block;
-            margin: 10px auto;
+            display: inline-block;
+            margin: 10px 5px;
             padding: 10px 20px;
             background-color: #61dafb;
             color: #fff;
@@ -80,15 +80,42 @@
     
     <div class="code-container">
         <textarea id="code-input" placeholder="Write your code here..."></textarea>
-        <button onclick="renderCode()">Render Code</button>
+        <div>
+            <button onclick="renderCode()">Render Code</button>
+            <button onclick="copyCode()">Copy Code</button>
+            <button onclick="downloadCode()">Download Code</button>
+        </div>
         <pre><code id="code-output"></code></pre>
     </div>
 
     <script>
+        // Function to render the code input
         function renderCode() {
             const codeInput = document.getElementById('code-input').value;
             const codeOutput = document.getElementById('code-output');
             codeOutput.textContent = codeInput;
+        }
+
+        // Function to copy the rendered code to clipboard
+        function copyCode() {
+            const codeOutput = document.getElementById('code-output').textContent;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeOutput;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+            alert('Code copied to clipboard!');
+        }
+
+        // Function to download the rendered code as a .txt file
+        function downloadCode() {
+            const codeOutput = document.getElementById('code-output').textContent;
+            const blob = new Blob([codeOutput], { type: 'text/plain' });
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.download = 'code-snippet.txt';
+            downloadLink.click();
         }
     </script>
 </body>
