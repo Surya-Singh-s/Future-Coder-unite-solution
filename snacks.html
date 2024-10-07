@@ -43,8 +43,13 @@
         </div>
         <button id="down">Lower</button>
     </div>
-    <button id="restart">Restart</button>
-    <button id="pause">Pause</button>
+    <div>
+        <button id="restart">Restart</button>
+        <button id="pause">Pause</button>
+        <button id="slow">Slow</button>
+        <button id="normal">Normal</button>
+        <button id="fast">Fast</button>
+    </div>
     <script>
         const canvas = document.getElementById("gameCanvas");
         const ctx = canvas.getContext("2d");
@@ -58,6 +63,7 @@
         let dy = 0;
         let gameOver = false;
         let paused = false;
+        let speed = 100; // Initial speed
         let gameInterval;
 
         function drawGame() {
@@ -156,7 +162,7 @@
             clearInterval(gameInterval);
             generateFood();
             drawGame();
-            gameInterval = setInterval(drawGame, 100);
+            gameInterval = setInterval(drawGame, speed);
         }
 
         function pauseGame() {
@@ -165,8 +171,16 @@
                 clearInterval(gameInterval);
                 document.getElementById("pause").innerText = "Resume";
             } else {
-                gameInterval = setInterval(drawGame, 100);
+                gameInterval = setInterval(drawGame, speed);
                 document.getElementById("pause").innerText = "Pause";
+            }
+        }
+
+        function changeSpeed(newSpeed) {
+            speed = newSpeed;
+            if (!paused) {
+                clearInterval(gameInterval);
+                gameInterval = setInterval(drawGame, speed);
             }
         }
 
@@ -176,9 +190,12 @@
         document.getElementById("right").addEventListener("click", controlSnake);
         document.getElementById("restart").addEventListener("click", restartGame);
         document.getElementById("pause").addEventListener("click", pauseGame);
+        document.getElementById("slow").addEventListener("click", () => changeSpeed(200));  // Slow speed
+        document.getElementById("normal").addEventListener("click", () => changeSpeed(100)); // Normal speed
+        document.getElementById("fast").addEventListener("click", () => changeSpeed(50));    // Fast speed
 
         generateFood();
-        gameInterval = setInterval(drawGame, 100);
+        gameInterval = setInterval(drawGame, speed);
     </script>
 </body>
-</html>
+</html>                   
