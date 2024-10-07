@@ -115,32 +115,32 @@
     <script>
         // Function to run the code via the JDoodle API
         async function runCode() {
-            const codeInput = document.getElementById('code-input').value;
-            const language = document.getElementById('language-select').value;
+    const codeInput = document.getElementById('code-input').value;
+    const language = document.getElementById('language-select').value;
 
-            const clientId = "5bf9481db41bdf059813623057143cee"; // JDoodle Client ID
-            const clientSecret = "11b785bbaa5b2fbc0ae6a61825bcb0395d60449ea13b9177662518efbd9caa0"; // JDoodle Client Secret
+    const clientId = "5bf9481db41bdf059813623057143cee"; // JDoodle Client ID
+    const clientSecret = "11b785bbaa5b2fbc0ae6a61825bcb0395d60449ea13b9177662518efbd9caa0"; // JDoodle Client Secret
 
-            const requestPayload = {
-                clientId: clientId,
-                clientSecret: clientSecret,
-                script: codeInput,
-                language: language,
-                versionIndex: "0"
-            };
+    const requestPayload = {
+        clientId: clientId,
+        clientSecret: clientSecret,
+        script: codeInput,
+        language: language,
+        versionIndex: "0"
+    };
 
-            try {
-                const response = await fetch('https://api.jdoodle.com/v1/execute', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(requestPayload)
-                });
+    try {
+        const response = await fetch('https://cors-anywhere.herokuapp.com/https://api.jdoodle.com/v1/execute', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(requestPayload)
+        });
 
-                const result = await response.json();
-                document.getElementById('console-output').textContent = result.output;
-            } catch (error) {
-                document.getElementById('console-output').textContent = 'Error: ' + error.message;
-            }
+        const result = await response.json();
+        document.getElementById('console-output').textContent = result.output;
+    } catch (error) {
+        document.getElementById('console-output').textContent = 'Error: ' + error.message;
+    }
         }
 
         // Function to render code in the output area (for display purposes)
