@@ -36,10 +36,17 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin: 5px;
         }
 
         button:hover {
             background-color: #34495e;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -50,12 +57,24 @@
             <h2>Score: <span id="score">0</span></h2>
             <button id="restartButton">Restart</button>
         </div>
+        <div class="controls">
+            <button id="upButton">↑</button>
+            <div>
+                <button id="leftButton">←</button>
+                <button id="rightButton">→</button>
+            </div>
+            <button id="downButton">↓</button>
+        </div>
     </div>
     <script>
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
         const scoreDisplay = document.getElementById('score');
         const restartButton = document.getElementById('restartButton');
+        const upButton = document.getElementById('upButton');
+        const downButton = document.getElementById('downButton');
+        const leftButton = document.getElementById('leftButton');
+        const rightButton = document.getElementById('rightButton');
 
         let snake = [{ x: 10, y: 10 }];
         let direction = { x: 0, y: 0 };
@@ -149,13 +168,34 @@
         }
 
         restartButton.addEventListener('click', () => {
+            resetGame();
+        });
+
+        // Control buttons
+        upButton.addEventListener('click', () => {
+            if (direction.y === 0) direction = { x: 0, y: -1 };
+        });
+
+        downButton.addEventListener('click', () => {
+            if (direction.y === 0) direction = { x: 0, y: 1 };
+        });
+
+        leftButton.addEventListener('click', () => {
+            if (direction.x === 0) direction = { x: -1, y: 0 };
+        });
+
+        rightButton.addEventListener('click', () => {
+            if (direction.x === 0) direction = { x: 1, y: 0 };
+        });
+
+        function resetGame() {
             snake = [{ x: 10, y: 10 }];
             direction = { x: 0, y: 0 };
             score = 0;
             scoreDisplay.textContent = score;
             clearInterval(gameInterval);
             startGame();
-        });
+        }
 
         // Start the game
         startGame();
