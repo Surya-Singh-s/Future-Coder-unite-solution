@@ -28,8 +28,7 @@
         .controls {
             display: flex;
             justify-content: center;
-            margin-top: 40px; /* Increased gap above controls */
-            gap: 40px; /* Increased gap between buttons */
+            margin-top: 20px; /* Margin above controls */
         }
 
         .control-button {
@@ -42,6 +41,7 @@
             font-size: 1.5em;
             cursor: pointer;
             transition: background-color 0.3s;
+            margin: 0 10px; /* Added margin for spacing */
         }
 
         .control-button:hover {
@@ -58,12 +58,16 @@
     <h1>Snake Game</h1>
     <canvas id="gameCanvas" width="400" height="400"></canvas>
     <div class="controls">
-        <button class="control-button" id="upButton">↑</button>
+        <div>
+            <button class="control-button" id="upButton">↑</button>
+        </div>
         <div>
             <button class="control-button" id="leftButton">←</button>
             <button class="control-button" id="rightButton">→</button>
         </div>
-        <button class="control-button" id="downButton">↓</button>
+        <div>
+            <button class="control-button" id="downButton">↓</button>
+        </div>
     </div>
     <div class="message" id="message"></div>
 
@@ -169,7 +173,6 @@
             game = setInterval(draw, 150);
         }
 
-        // Decrease the speed of the snake by increasing the interval time
         let game = setInterval(draw, 150); // Speed reduced from 100ms to 150ms
     </script>
 </body>
