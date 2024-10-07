@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Snippet Renderer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            padding-top: 20px;
+        }
+
+        .code-container {
+            background-color: rgba(30, 30, 30, 0.8);
+            color: #dcdcdc;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 50px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        pre {
+            background-color: #282c34;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+            display: block;
+            color: #61dafb;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            display: inline-block;
+            margin: 10px 5px;
+            padding: 10px 20px;
+            background-color: #61dafb;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #21a1f1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Code Snippet Renderer</h1>
+    
+    <div class="code-container">
+        <textarea id="code-input" placeholder="Write your code here..."></textarea>
+        <div>
+            <button onclick="renderCode()">Render Code</button>
+            <button onclick="runCode()">Run Code</button>
+            <button onclick="copyCode()">Copy Code</button>
+            <button onclick="downloadCode()">Download Code</button>
+        </div>
+        <pre><code id="code-output"></code></pre>
+        <h3>Console Output:</h3>
+        <pre><code id="console-output"></code></pre>
+    </div>
+
+    <script>
+        // Function to render the code input
+        function renderCode() {
+            const codeInput = document.getElementById('code-input').value;
+            const codeOutput = document.getElementById('code-output');
+            codeOutput.textContent = codeInput;
+        }
+
+        // Function to run the JavaScript code
+        function runCode() {
+            const codeInput = document.getElementById('code-input').value;
+            const consoleOutput = document.getElementById('console-output');
+            
+            try {
+                const result = eval(codeInput); // Evaluate the JavaScript code
+                consoleOutput.textContent = result !== undefined ? result : 'Code executed successfully!';
+            } catch (error) {
+                consoleOutput.textContent = `Error: ${error.message}`;
+            }
+        }
+
+        // Function to copy the rendered code to clipboard
+        function copyCode() {
+            const codeOutput = document.getElementById('code-output').textContent;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeOutput;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+            alert('Code copied to clipboard!');
+        }
+
+        // Function to download the rendered code as a .txt file
+        function downloadCode() {
+            const codeOutput = document.getElementById('code-output').textContent;
+            const blob = new Blob([codeOutput], { type: 'text/plain' });
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.download = 'code-snippet.txt';
+            downloadLink.click();
+        }
+    </script>
+</body>
+</html>
