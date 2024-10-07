@@ -59,10 +59,10 @@
             width: 50px;
             height: 50px;
             display: inline-block; /* Change to inline-block */
+            margin-bottom: 10px; /* Space between icon and text */
         }
         .study-text {
             color: #ffcc00;
-            margin-top: 5px;
             display: inline-block; /* Change to inline-block */
             vertical-align: middle; /* Aligns text with icon */
         }
@@ -70,6 +70,10 @@
             width: 50px; /* Adjust game icon size if needed */
             height: 50px; /* Adjust game icon size if needed */
             display: inline-block; /* Change to inline-block */
+            margin-bottom: 10px; /* Space between icon and text */
+        }
+        .icon-container {
+            margin: 20px 0; /* Space between the two icon containers */
         }
     </style>
 </head>
@@ -89,14 +93,18 @@
     </ul>
 
     <div class="study-icon-container">
-        <a href="studymaterial.html" target="_blank">
-            <img src="study-icon.png" alt="Study Icon" class="study-icon">
-            <span class="study-text">Study</span>
-        </a>
-        <a href="game.html" target="_blank">
-            <img src="game-icon.png" alt="Game Icon" class="game-icon">
-            <span class="study-text">Game</span>
-        </a>
+        <div class="icon-container">
+            <a href="studymaterial.html" target="_blank">
+                <img src="study-icon.png" alt="Study Icon" class="study-icon">
+                <span class="study-text">Study</span>
+            </a>
+        </div>
+        <div class="icon-container">
+            <a href="game.html" target="_blank">
+                <img src="game-icon.png" alt="Game Icon" class="game-icon">
+                <span class="study-text">Game</span>
+            </a>
+        </div>
     </div>
 
     <footer>
