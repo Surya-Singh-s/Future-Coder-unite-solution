@@ -12,38 +12,24 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
+            background-color: #f0f8ff;
             font-family: Arial, sans-serif;
-            position: relative;
-            overflow: hidden;
         }
 
         h1 {
-            position: absolute;
-            top: 20px;
-            z-index: 1;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            margin-bottom: 20px;
         }
 
         #gameCanvas {
             border: 1px solid #000;
-            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent to see the video */
-            z-index: 2;
+            background-color: #fff;
         }
 
         .controls {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-            z-index: 2;
-        }
-
-        .control-buttons {
-            display: flex;
             justify-content: center;
-            margin-bottom: 15px; /* Increased spacing */
-            gap: 15px; /* Increased spacing */
+            margin-top: 40px; /* Increased gap above controls */
+            gap: 20px; /* Increased gap between buttons */
         }
 
         .control-button {
@@ -65,58 +51,19 @@
         .message {
             margin-top: 10px;
             font-size: 1.5em;
-            color: white;
-            z-index: 2;
-        }
-
-        video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Cover the entire screen */
-            z-index: 1;
-            opacity: 0.5; /* Adjust opacity as needed */
-        }
-
-        #restartButton {
-            margin-top: 10px;
-            width: 100px;
-            height: 40px;
-            background-color: #dc3545;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        #restartButton:hover {
-            background-color: #c82333;
         }
     </style>
 </head>
 <body>
     <h1>Snake Game</h1>
-    <video autoplay loop muted>
-        <source src="path/to/your/video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
     <canvas id="gameCanvas" width="400" height="400"></canvas>
     <div class="controls">
-        <div class="control-buttons">
-            <button class="control-button" id="upButton">↑</button>
-        </div>
-        <div class="control-buttons">
+        <button class="control-button" id="upButton">↑</button>
+        <div>
             <button class="control-button" id="leftButton">←</button>
             <button class="control-button" id="rightButton">→</button>
         </div>
-        <div class="control-buttons">
-            <button class="control-button" id="downButton">↓</button>
-        </div>
-        <button id="restartButton">Restart</button>
+        <button class="control-button" id="downButton">↓</button>
     </div>
     <div class="message" id="message"></div>
 
@@ -133,7 +80,6 @@
             y: Math.floor(Math.random() * 19 + 1) * box
         };
         let score = 0;
-        let speed = 150; // Reduced speed
 
         function draw() {
             ctx.fillStyle = '#f0f8ff';
@@ -200,26 +146,13 @@
             }
         }
 
-        function restartGame() {
-            snake = [{ x: 9 * box, y: 9 * box }];
-            direction = '';
-            food = {
-                x: Math.floor(Math.random() * 19 + 1) * box,
-                y: Math.floor(Math.random() * 19 + 1) * box
-            };
-            score = 0;
-            message.textContent = '';
-            clearInterval(game);
-            game = setInterval(draw, speed); // Use the adjusted speed
-        }
-
         document.getElementById('upButton').addEventListener('click', () => changeDirection('UP'));
         document.getElementById('downButton').addEventListener('click', () => changeDirection('DOWN'));
         document.getElementById('leftButton').addEventListener('click', () => changeDirection('LEFT'));
         document.getElementById('rightButton').addEventListener('click', () => changeDirection('RIGHT'));
-        document.getElementById('restartButton').addEventListener('click', restartGame);
 
-        let game = setInterval(draw, speed); // Start with the adjusted speed
+        // Decrease the speed of the snake by increasing the interval time
+        const game = setInterval(draw, 150); // Speed reduced from 100ms to 150ms
     </script>
 </body>
 </html>
