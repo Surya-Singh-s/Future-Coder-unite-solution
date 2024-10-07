@@ -88,6 +88,8 @@
         </select>
         <div>
             <button onclick="runCode()">Run Code</button>
+            <button onclick="copyCode()">Copy Code</button>
+            <button onclick="downloadCode()">Download Code</button>
             <pre><code id="console-output"></code></pre>
         </div>
     </div>
@@ -97,9 +99,8 @@
             const codeInput = document.getElementById('code-input').value;
             const language = document.getElementById('language-select').value;
 
-            // Replace with your actual JDoodle credentials
-            const clientId = "5bf9481db41bdf059813623057143cee";
-            const clientSecret = "11b785bbaa5b2fbc0ae6a61825bcb0395d60449ea13b9177662518efbd9caa0";
+            const clientId = "5bf9481db41bdf059813623057143cee"; // JDoodle Client ID
+            const clientSecret = "11b785bbaa5b2fbc0ae6a61825bcb0395d60449ea13b9177662518efbd9caa0"; // JDoodle Client Secret
 
             const requestPayload = {
                 clientId: clientId,
@@ -121,6 +122,28 @@
             } catch (error) {
                 document.getElementById('console-output').textContent = 'Error: ' + error.message;
             }
+        }
+
+        // Copy Code Function
+        function copyCode() {
+            const codeInput = document.getElementById('code-input').value;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeInput;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+            alert('Code copied to clipboard!');
+        }
+
+        // Download Code Function
+        function downloadCode() {
+            const codeInput = document.getElementById('code-input').value;
+            const blob = new Blob([codeInput], { type: 'text/plain' });
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.download = 'code-snippet.txt';
+            downloadLink.click();
         }
     </script>
 </body>
