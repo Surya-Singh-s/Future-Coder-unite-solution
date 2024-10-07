@@ -28,7 +28,7 @@ We welcome contributions from all members! If you have ideas, resources, or codi
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the  License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
