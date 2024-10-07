@@ -29,7 +29,7 @@
             display: flex;
             justify-content: center;
             margin-top: 40px; /* Increased gap above controls */
-            gap: 20px; /* Increased gap between buttons */
+            gap: 40px; /* Increased gap between buttons */
         }
 
         .control-button {
@@ -117,7 +117,7 @@
 
             if (snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height || collision(newHead, snake)) {
                 clearInterval(game);
-                message.textContent = "Game Over!";
+                message.innerHTML = `Game Over! <br> <button class="control-button" id="restartButton">Restart</button>`;
                 return;
             }
 
@@ -151,8 +151,26 @@
         document.getElementById('leftButton').addEventListener('click', () => changeDirection('LEFT'));
         document.getElementById('rightButton').addEventListener('click', () => changeDirection('RIGHT'));
 
+        document.body.addEventListener('click', (event) => {
+            if (event.target.id === 'restartButton') {
+                resetGame();
+            }
+        });
+
+        function resetGame() {
+            snake = [{ x: 9 * box, y: 9 * box }];
+            direction = '';
+            food = {
+                x: Math.floor(Math.random() * 19 + 1) * box,
+                y: Math.floor(Math.random() * 19 + 1) * box
+            };
+            score = 0;
+            message.textContent = `Score: ${score}`;
+            game = setInterval(draw, 150);
+        }
+
         // Decrease the speed of the snake by increasing the interval time
-        const game = setInterval(draw, 150); // Speed reduced from 100ms to 150ms
+        let game = setInterval(draw, 150); // Speed reduced from 100ms to 150ms
     </script>
 </body>
 </html>
