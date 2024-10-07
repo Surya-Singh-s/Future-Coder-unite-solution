@@ -35,9 +35,6 @@
             color: #ffcc00;
             font-weight: bold;
             transition: color 0.3s, transform 0.3s;
-            display: flex; /* Make it a flex container */
-            align-items: center; /* Center items vertically */
-            justify-content: center; /* Center items horizontally */
         }
         a:hover {
             color: #ffffff;
@@ -49,10 +46,10 @@
             color: #ffcc00;
         }
         .icon {
-            width: 30px; /* Adjusted size */
-            height: 30px; /* Adjusted size */
             vertical-align: middle;
             margin-right: 10px;
+            width: 30px; /* Adjust icon size if needed */
+            height: 30px; /* Adjust icon size if needed */
         }
         .study-icon-container {
             text-align: center;
@@ -61,12 +58,13 @@
         .study-icon {
             width: 50px;
             height: 50px;
-            display: block;
-            margin: 0 auto;
+            display: inline-block; /* Change to inline-block */
         }
         .study-text {
             color: #ffcc00;
             margin-top: 5px;
+            display: inline-block; /* Change to inline-block */
+            vertical-align: middle; /* Aligns text with icon */
         }
     </style>
 </head>
@@ -74,29 +72,21 @@
     <h1>Techrise Community Challenges</h1>
     <ul class="challenge-list">
         <li>
-            <a href="InterCode.html" target="_blank">
-                <img src="icon1.png" alt="InterCode Icon" class="icon">
-                Inter Code: JavaScript Run Support
-            </a>
+            <img src="icon1.png" alt="InterCode Icon" class="icon">
+            <a href="InterCode.html" target="_blank">Inter Code: JavaScript Run Support</a>
         </li>
         <li>
-            <a href="CodeRunner.html" target="_blank">
-                <img src="icon2.png" alt="CodeRunner Icon" class="icon">
-                Inter Code: All Language Support
-            </a>
+            <img src="icon2.png" alt="CodeRunner Icon" class="icon">
+            <a href="CodeRunner.html" target="_blank">Inter Code: All Language Support</a>
         </li>
-        <li>
-            <a href="day1.html" target="_blank">Day 1: Prime Number Check</a>
-        </li>
-        <li>
-            <a href="day2.html" target="_blank">Day 2: Factorial Calculation</a>
-        </li>
+        <li><a href="day1.html" target="_blank">Day 1: Prime Number Check</a></li>
+        <li><a href="day2.html" target="_blank">Day 2: Factorial Calculation</a></li>
     </ul>
 
     <div class="study-icon-container">
         <a href="studymaterial.html" target="_blank">
             <img src="study-icon.png" alt="Study Icon" class="study-icon">
-            <p class="study-text">Study</p>
+            <span class="study-text">Study</span>
         </a>
     </div>
 
