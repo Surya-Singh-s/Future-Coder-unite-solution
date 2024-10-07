@@ -14,6 +14,7 @@
             background-position: center;
             background-repeat: no-repeat;
             color: #fff;
+            height: 100vh;
         }
 
         h1 {
@@ -28,8 +29,18 @@
             padding: 20px;
             border-radius: 8px;
             max-width: 800px;
-            margin: 50px auto;
+            margin: 20px auto;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        textarea, select {
+            width: 100%;
+            height: 200px; /* Half screen */
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
 
         pre {
@@ -45,16 +56,6 @@
             font-size: 14px;
             display: block;
             color: #61dafb;
-        }
-
-        textarea, select {
-            width: 100%;
-            padding: 10px;
-            font-family: "Courier New", monospace;
-            font-size: 14px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
         }
 
         button {
@@ -88,13 +89,15 @@
         </select>
         <div>
             <button onclick="runCode()">Run Code</button>
+            <button onclick="renderCode()">Render Code</button>
             <button onclick="copyCode()">Copy Code</button>
             <button onclick="downloadCode()">Download Code</button>
-            <pre><code id="console-output"></code></pre>
         </div>
+        <pre><code id="console-output"></code></pre>
     </div>
 
     <script>
+        // Function to run the code via the JDoodle API
         async function runCode() {
             const codeInput = document.getElementById('code-input').value;
             const language = document.getElementById('language-select').value;
@@ -124,7 +127,14 @@
             }
         }
 
-        // Copy Code Function
+        // Function to render code in the output area (for display purposes)
+        function renderCode() {
+            const codeInput = document.getElementById('code-input').value;
+            const consoleOutput = document.getElementById('console-output');
+            consoleOutput.textContent = codeInput; // Display the code input in the pre tag
+        }
+
+        // Function to copy the code
         function copyCode() {
             const codeInput = document.getElementById('code-input').value;
             const tempTextArea = document.createElement('textarea');
@@ -136,7 +146,7 @@
             alert('Code copied to clipboard!');
         }
 
-        // Download Code Function
+        // Function to download the code as a text file
         function downloadCode() {
             const codeInput = document.getElementById('code-input').value;
             const blob = new Blob([codeInput], { type: 'text/plain' });
