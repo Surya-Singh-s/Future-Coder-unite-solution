@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Challenges</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 24px;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .challenge-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e8f5e9;
+            border-radius: 8px;
+        }
+        .challenge-item img {
+            width: 40px;
+            height: 40px;
+            margin-right: 20px;
+        }
+        .challenge-text {
+            font-size: 18px;
+        }
+        .upload-section {
+            margin: 20px 0;
+        }
+        .upload-section input[type="file"] {
+            margin-right: 10px;
+        }
+        .upload-section button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .upload-section button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        Daily Challenges
+    </div>
+
+    <div class="container">
+        <!-- Upload Section -->
+        <div class="upload-section">
+            <h3>Upload New Challenge</h3>
+            <input type="file" accept=".txt" id="challengeFile">
+            <button onclick="uploadChallenge()">Upload Challenge</button>
+        </div>
+
+        <!-- Challenges List -->
+        <div id="challengesList">
+            <h3>Today's Challenges:</h3>
+            <!-- Example Challenge Item -->
+            <div class="challenge-item">
+                <img src="https://img.icons8.com/ios-filled/50/000000/task.png" alt="Challenge Icon">
+                <div class="challenge-text">Complete the coding challenge on Arrays.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function uploadChallenge() {
+            const fileInput = document.getElementById('challengeFile');
+            const challengesList = document.getElementById('challengesList');
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+                    const challengeText = event.target.result;
+                    const challengeItem = document.createElement('div');
+                    challengeItem.classList.add('challenge-item');
+
+                    // Add icon and text
+                    challengeItem.innerHTML = `
+                        <img src="https://img.icons8.com/ios-filled/50/000000/task.png" alt="Challenge Icon">
+                        <div class="challenge-text">${challengeText}</div>
+                    `;
+
+                    // Append to the list
+                    challengesList.appendChild(challengeItem);
+                };
+
+                reader.readAsText(file);
+            }
+        }
+    </script>
+
+</body>
+</html>
