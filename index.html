@@ -35,6 +35,9 @@
             color: #ffcc00;
             font-weight: bold;
             transition: color 0.3s, transform 0.3s;
+            display: flex; /* Make it a flex container */
+            align-items: center; /* Center items vertically */
+            justify-content: center; /* Center items horizontally */
         }
         a:hover {
             color: #ffffff;
@@ -71,15 +74,23 @@
     <h1>Techrise Community Challenges</h1>
     <ul class="challenge-list">
         <li>
-            <img src="icon1.png" alt="InterCode Icon" class="icon">
-            <a href="InterCode.html" target="_blank">Inter Code: JavaScript Run Support</a>
+            <a href="InterCode.html" target="_blank">
+                <img src="icon1.png" alt="InterCode Icon" class="icon">
+                Inter Code: JavaScript Run Support
+            </a>
         </li>
         <li>
-            <img src="icon2.png" alt="CodeRunner Icon" class="icon">
-            <a href="CodeRunner.html" target="_blank">Inter Code: All Language Support</a>
+            <a href="CodeRunner.html" target="_blank">
+                <img src="icon2.png" alt="CodeRunner Icon" class="icon">
+                Inter Code: All Language Support
+            </a>
         </li>
-        <li><a href="day1.html" target="_blank">Day 1: Prime Number Check</a></li>
-        <li><a href="day2.html" target="_blank">Day 2: Factorial Calculation</a></li>
+        <li>
+            <a href="day1.html" target="_blank">Day 1: Prime Number Check</a>
+        </li>
+        <li>
+            <a href="day2.html" target="_blank">Day 2: Factorial Calculation</a>
+        </li>
     </ul>
 
     <div class="study-icon-container">
