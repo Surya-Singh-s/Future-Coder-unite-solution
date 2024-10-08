@@ -63,21 +63,31 @@
       margin-top: 30px;
       cursor: pointer;
       transition: transform 0.3s ease;
+      box-shadow: 0 0 20px #0072ff; /* Initial glow */
     }
 
     .animated-btn:hover {
       transform: scale(1.1);
     }
 
-    /* Blinking Animation for the Button */
-    @keyframes blink {
-      0% { opacity: 1; }
-      50% { opacity: 0; }
-      100% { opacity: 1; }
+    /* Blinking Light Effect for the Button */
+    @keyframes blinking-light {
+      0% {
+        box-shadow: 0 0 20px #0072ff, 0 0 30px #0072ff, 0 0 40px #0072ff;
+        opacity: 1;
+      }
+      50% {
+        box-shadow: 0 0 5px #0072ff;
+        opacity: 0.5;
+      }
+      100% {
+        box-shadow: 0 0 20px #0072ff, 0 0 30px #0072ff, 0 0 40px #0072ff;
+        opacity: 1;
+      }
     }
 
     .blinking-btn {
-      animation: blink 1s infinite; /* Blinking effect every second */
+      animation: blinking-light 1.5s infinite ease-in-out; /* Smooth blinking light effect */
     }
 
     /* Animation Effects */
@@ -98,7 +108,7 @@
   <div class="container">
     <h1 class="welcome-text animate__animated animate__fadeInDown">Welcome to <span class="animate__animated animate__pulse animate__infinite">Techrise Community</span></h1>
     
-    <!-- Explore the Community Button with Blinking Effect -->
+    <!-- Explore the Community Button with Blinking Light Effect -->
     <a href="community.html">
       <button class="animated-btn animate__animated animate__fadeInUp blinking-btn">
         Explore the Community
