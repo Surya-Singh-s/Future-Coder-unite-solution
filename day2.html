@@ -17,10 +17,10 @@
         .container {
             max-width: 800px;
             margin: 50px auto;
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8); /* Darker semi-transparent background */
+            padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
             animation: fadeIn 1s ease-in-out; /* Fade-in animation */
         }
         @keyframes fadeIn {
@@ -42,6 +42,7 @@
             font-size: 18px;
             line-height: 1.6;
             animation: fadeIn 1s ease-in-out;
+            margin: 10px 0;
         }
         a {
             color: #4CAF50;
@@ -61,8 +62,24 @@
             padding: 0;
         }
         .links li {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             animation: fadeIn 1.5s ease-in-out; /* Fade-in effect for links */
+        }
+        .join-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .join-button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -89,6 +106,7 @@
 
         <h3>Join the Tech Rise Community!</h3>
         <p>Engage with fellow learners and share your progress.</p>
+        <a href="https://yourcommunitylink.com" target="_blank" class="join-button">Join Now</a>
     </div>
 
 </body>
