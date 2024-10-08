@@ -69,6 +69,17 @@
       transform: scale(1.1);
     }
 
+    /* Blinking Animation for the Button */
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .blinking-btn {
+      animation: blink 1s infinite; /* Blinking effect every second */
+    }
+
     /* Animation Effects */
     .animate__animated {
       animation-duration: 2s;
@@ -87,9 +98,9 @@
   <div class="container">
     <h1 class="welcome-text animate__animated animate__fadeInDown">Welcome to <span class="animate__animated animate__pulse animate__infinite">Techrise Community</span></h1>
     
-    <!-- Explore the Community Button -->
+    <!-- Explore the Community Button with Blinking Effect -->
     <a href="community.html">
-      <button class="animated-btn animate__animated animate__fadeInUp">
+      <button class="animated-btn animate__animated animate__fadeInUp blinking-btn">
         Explore the Community
       </button>
     </a>
