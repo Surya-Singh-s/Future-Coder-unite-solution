@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Welcome to Techrise Community</title>
+
+  <!-- Link to Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+
+  <!-- Link to Animate.css for animation effects -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <!-- Custom CSS -->
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* Video Background Styling */
+    #bgVideo {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover; /* Ensures the video covers the screen */
+    }
+
+    /* Container Styling */
+    .container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    }
+
+    .welcome-text {
+      font-size: 48px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .animated-btn {
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #0072ff;
+      background-color: white;
+      border: none;
+      border-radius: 25px;
+      margin-top: 30px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 20px #0072ff; /* Initial glow */
+    }
+
+    .animated-btn:hover {
+      transform: scale(1.1);
+    }
+
+    /* Blinking Light Effect for the Button */
+    @keyframes blinking-light {
+      0% {
+        box-shadow: 0 0 20px #0072ff, 0 0 30px #0072ff, 0 0 40px #0072ff;
+        opacity: 1;
+      }
+      50% {
+        box-shadow: 0 0 5px #0072ff;
+        opacity: 0.5;
+      }
+      100% {
+        box-shadow: 0 0 20px #0072ff, 0 0 30px #0072ff, 0 0 40px #0072ff;
+        opacity: 1;
+      }
+    }
+
+    .blinking-btn {
+      animation: blinking-light 1.5s infinite ease-in-out; /* Smooth blinking light effect */
+    }
+
+    /* Animation Effects */
+    .animate__animated {
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+    }
+  </style>
+</head>
+<body>
+  <!-- Video Background -->
+  <video autoplay muted loop id="bgVideo">
+    <source src="video.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1 class="welcome-text animate__animated animate__fadeInDown">Welcome to <span class="animate__animated animate__pulse animate__infinite">Techrise Community</span></h1>
+    
+    <!-- Explore the Community Button with Blinking Light Effect -->
+    <a href="community.html">
+      <button class="animated-btn animate__animated animate__fadeInUp blinking-btn">
+        Explore the Community
+      </button>
+    </a>
+  </div>
+</body>
+</html>
