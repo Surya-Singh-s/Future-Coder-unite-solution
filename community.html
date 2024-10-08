@@ -19,97 +19,137 @@
             color: #ffcc00;
             text-shadow: 2px 2px 5px #000;
         }
-        .challenge-list {
-            list-style-type: none;
-            padding: 0;
+        .challenge-container {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+            transition: background 0.3s;
         }
-        .challenge-list li {
-            margin: 15px 0;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border-radius: 8px;
+        .challenge-container:hover {
+            background: rgba(0, 0, 0, 0.8); /* Darker on hover */
         }
-        a {
-            text-decoration: none;
+        .challenge-title {
+            font-size: 1.5em;
             color: #ffcc00;
+        }
+        .challenge-brief {
+            margin: 10px 0;
+            font-size: 1em;
+        }
+        .challenge-link {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        .join-container {
+            margin-top: 20px;
+            border: 1px solid #ffcc00;
+            border-radius: 8px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .join-link {
+            color: #ffcc00;
+            text-decoration: none;
             font-weight: bold;
+            display: block;
+            margin: 5px 0;
+            text-align: center;
             transition: color 0.3s, transform 0.3s;
         }
-        a:hover {
+        .join-link:hover {
             color: #ffffff;
-            transform: scale(1.1);
+            transform: scale(1.05);
+        }
+        .subscribe-container {
+            text-align: center;
+            margin-top: 20px;
         }
         footer {
             text-align: center;
             margin-top: 30px;
             color: #ffcc00;
         }
-        .icon {
-            vertical-align: middle;
-            margin-right: 10px;
-            width: 30px; /* Adjust icon size if needed */
-            height: 30px; /* Adjust icon size if needed */
-        }
-        .study-icon-container {
-            text-align: center;
-            margin-top: 30px;
-        }
-        .study-icon {
-            width: 50px;
-            height: 50px;
-            display: inline-block; /* Change to inline-block */
-            margin-bottom: 10px; /* Space between icon and text */
-        }
-        .study-text {
-            color: #ffcc00;
-            display: inline-block; /* Change to inline-block */
-            vertical-align: middle; /* Aligns text with icon */
-        }
-        .game-icon {
-            width: 50px; /* Adjust game icon size if needed */
-            height: 50px; /* Adjust game icon size if needed */
-            display: inline-block; /* Change to inline-block */
-            margin-bottom: 10px; /* Space between icon and text */
-        }
-        .icon-container {
-            margin: 20px 0; /* Space between the two icon containers */
-        }
     </style>
+    <script>
+        function subscribe() {
+            // Hide the subscription link
+            document.getElementById('subscribe-link').style.display = 'none';
+            alert('Thank you for subscribing to the Techrise Community!');
+        }
+    </script>
 </head>
 <body>
     <h1>Techrise Community Challenges</h1>
-    <ul class="challenge-list">
-        <li>
-            <img src="icon1.png" alt="InterCode Icon" class="icon">
-            <a href="InterCode.html" target="_blank">Inter Code: JavaScript Run Support</a>
-        </li>
-        <li>
-            <img src="icon2.png" alt="CodeRunner Icon" class="icon">
-            <a href="CodeRunner.html" target="_blank">Inter Code: All Language Support</a>
-        </li>
-        <li><a href="dailychallenge.html" target="_blank">Daily 🎯</a></li>
-        <li><a href="day1.html" target="_blank">Day 1: Prime Number Check</a></li>
-        <li><a href="day2.html" target="_blank">Day 2: Factorial Calculation</a></li>
-    </ul>
 
-    <div class="study-icon-container">
-        <div class="icon-container">
-            <a href="studymaterial.html" target="_blank">
-                <img src="study-icon.png" alt="Study Icon" class="study-icon">
-                <span class="study-text">Study</span>
-            </a>
-        </div>
-        <div class="icon-container">
-            <a href="game.html" target="_blank">
-                <img src="game-icon.png" alt="Game Icon" class="game-icon">
-                <span class="study-text">Game</span>
-            </a>
+    <div class="challenge-container">
+        <div class="challenge-title">Inter Code: JavaScript Run Support</div>
+        <div class="challenge-brief">Brief about the Inter Code JavaScript Run Support.</div>
+        <a href="InterCode.html" class="challenge-link" target="_blank">Link</a>
+        <div class="join-container">
+            <a href="join-link1.html" class="join-link" target="_blank">Join Us for Inter Code: JavaScript Run Support</a>
         </div>
     </div>
 
+    <div class="challenge-container">
+        <div class="challenge-title">Inter Code: All Language Support</div>
+        <div class="challenge-brief">Brief about the Inter Code All Language Support.</div>
+        <a href="CodeRunner.html" class="challenge-link" target="_blank">Link</a>
+        <div class="join-container">
+            <a href="join-link2.html" class="join-link" target="_blank">Join Us for Inter Code: All Language Support</a>
+        </div>
+    </div>
+
+    <div class="challenge-container">
+        <div class="challenge-title">Daily Challenge</div>
+        <div class="challenge-brief">Brief about the Daily Challenge.</div>
+        <a href="dailychallenge.html" class="challenge-link" target="_blank">Link</a>
+        <div class="join-container">
+            <a href="join-link3.html" class="join-link" target="_blank">Join Us for Daily Challenge</a>
+        </div>
+    </div>
+
+    <div class="challenge-container">
+        <div class="challenge-title">Day 1: Prime Number Check</div>
+        <div class="challenge-brief">Brief about Day 1: Prime Number Check.</div>
+        <a href="day1.html" class="challenge-link" target="_blank">Link</a>
+        <div class="join-container">
+            <a href="join-link4.html" class="join-link" target="_blank">Join Us for Day 1 Challenge</a>
+        </div>
+    </div>
+
+    <div class="challenge-container">
+        <div class="challenge-title">Day 2: Factorial Calculation</div>
+        <div class="challenge-brief">Brief about Day 2: Factorial Calculation.</div>
+        <a href="day2.html" class="challenge-link" target="_blank">Link</a>
+        <div class="join-container">
+            <a href="join-link5.html" class="join-link" target="_blank">Join Us for Day 2 Challenge</a>
+        </div>
+    </div>
+
+    <div class="challenge-container">
+        <div class="challenge-title">Study Materials</div>
+        <div class="challenge-brief">Brief about Study Materials.</div>
+        <div class="join-container">
+            <a href="studymaterial.html" class="join-link" target="_blank">Join Us for Study Materials</a>
+        </div>
+    </div>
+
+    <div class="challenge-container">
+        <div class="challenge-title">Game</div>
+        <div class="challenge-brief">Brief about the Game.</div>
+        <a href="game.html" class="challenge-link" target="_blank">Link</a>
+        <div class="join-container">
+            <a href="join-link6.html" class="join-link" target="_blank">Join Us for the Game</a>
+        </div>
+    </div>
+
+    <div class="subscribe-container">
+        <a href="javascript:void(0);" id="subscribe-link" class="join-link" onclick="subscribe()">Subscribe to Techrise Community</a>
+    </div>
+
     <footer>
-        <p>Created by Techrise Community</p>
+        <p id="footer-text">Subscribe to Techrise Community</p>
     </footer>
 </body>
 </html>
