@@ -6,32 +6,81 @@
     <title>Number Guessing Game</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #9face6);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
+            margin: 0;
+            color: #fff;
             text-align: center;
+            animation: backgroundAnimation 5s infinite alternate;
         }
+
+        @keyframes backgroundAnimation {
+            0% { background: linear-gradient(135deg, #74ebd5, #9face6); }
+            100% { background: linear-gradient(135deg, #9face6, #74ebd5); }
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+        }
+
         input {
-            padding: 10px;
+            padding: 15px;
             margin: 10px;
             width: 200px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: box-shadow 0.3s;
         }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
         button {
-            padding: 10px 20px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #ff4081;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #f50057;
+            transform: scale(1.05);
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 1.5em;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+        }
+
+        #attempts {
+            font-size: 1.2em;
         }
     </style>
 </head>
 <body>
 
-    <h1>Number Guessing Game</h1>
-    <p>Guess a number between 1 and 100:</p>
-    <input type="number" id="guess" min="1" max="100" />
-    <button onclick="checkGuess()">Guess</button>
-    <p id="message"></p>
-    <p>Attempts: <span id="attempts">0</span></p>
+    <div>
+        <h1>Number Guessing Game</h1>
+        <p>Guess a number between 1 and 100:</p>
+        <input type="number" id="guess" min="1" max="100" />
+        <button onclick="checkGuess()">Guess</button>
+        <p id="message"></p>
+        <p>Attempts: <span id="attempts">0</span></p>
+    </div>
 
     <script>
         let numberToGuess = Math.floor(Math.random() * 100) + 1;
@@ -47,11 +96,14 @@
 
             if (guess < numberToGuess) {
                 message.textContent = "Too low! Try again.";
+                message.style.color = "#ffcc00"; // yellow
             } else if (guess > numberToGuess) {
                 message.textContent = "Too high! Try again.";
+                message.style.color = "#ffcc00"; // yellow
             } else {
-                message.textContent = `Congratulations! You guessed the number in ${attempts} attempts.`;
+                message.textContent = `🎉 Congratulations! You guessed the number in ${attempts} attempts.`;
                 guessInput.disabled = true; // Disable input after correct guess
+                message.style.color = "#00ff00"; // green
             }
         }
     </script>
