@@ -93,14 +93,24 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             // Draw the snake
-            ctx.fillStyle = 'lime';
             for (let i = 0; i < snake.length; i++) {
-                if (i === 0) {
-                    // Draw the head of the snake
-                    ctx.fillStyle = 'orange'; // Different color for the head
-                }
+                ctx.fillStyle = 'gold'; // Golden color for the snake body
                 ctx.fillRect(snake[i].x, snake[i].y, 20, 20);
-                ctx.fillStyle = 'lime'; // Reset color for the body
+                
+                if (i === 0) {
+                    // Draw the head of the snake with eyes
+                    ctx.fillStyle = 'gold'; // Head color same as body
+                    ctx.fillRect(snake[i].x, snake[i].y, 20, 20);
+
+                    // Draw eyes
+                    ctx.fillStyle = 'black'; // Eye color
+                    ctx.beginPath();
+                    ctx.arc(snake[i].x + 5, snake[i].y + 5, 3, 0, Math.PI * 2); // Left eye
+                    ctx.fill();
+                    ctx.beginPath();
+                    ctx.arc(snake[i].x + 15, snake[i].y + 5, 3, 0, Math.PI * 2); // Right eye
+                    ctx.fill();
+                }
             }
 
             // Draw the food
