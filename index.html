@@ -12,7 +12,6 @@
   <!-- Link to Animate.css for animation effects -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
-  <!-- Custom CSS -->
   <style>
     body, html {
       margin: 0;
@@ -64,50 +63,28 @@
       margin-top: 30px;
       cursor: pointer;
       transition: transform 0.3s ease;
-      box-shadow: 0 0 20px #0072ff; /* Initial glow */
+      box-shadow: 0 0 20px #0072ff;
     }
 
-    .animated-btn:hover {
-      transform: scale(1.1);
-    }
-
-    /* Blinking Light Effect for the Button */
-    @keyframes blinking-light {
-      0% {
-        box-shadow: 0 0 20px #0072ff, 0 0 30px #0072ff, 0 0 40px #0072ff;
-        opacity: 1;
-      }
-      50% {
-        box-shadow: 0 0 5px #0072ff;
-        opacity: 0.5;
-      }
-      100% {
-        box-shadow: 0 0 20px #0072ff, 0 0 30px #0072ff, 0 0 40px #0072ff;
-        opacity: 1;
-      }
+    .animated-btn:disabled {
+      background-color: grey;
+      cursor: not-allowed;
     }
 
     .blinking-btn {
-      animation: blinking-light 1.5s infinite ease-in-out; /* Smooth blinking light effect */
+      animation: blinking-light 1.5s infinite ease-in-out;
     }
 
-    /* New Registration Link Styling */
     .registration-link {
       margin-top: 20px;
       font-size: 18px;
-      color: #0072ff; /* Link color */
-      text-decoration: underline; /* Underline to mimic a link */
+      color: #0072ff;
+      text-decoration: underline;
       transition: color 0.3s ease;
     }
 
     .registration-link:hover {
-      color: #0056b3; /* Darker color on hover */
-    }
-
-    /* Animation Effects */
-    .animate__animated {
-      animation-duration: 2s;
-      animation-iteration-count: infinite;
+      color: #0056b3;
     }
   </style>
 </head>
@@ -120,19 +97,42 @@
 
   <!-- Main Content -->
   <div class="container">
-    <!-- Removed animation for movement -->
-    <h1 class="welcome-text">Welcome to <span class="animate__animated animate__pulse animate__infinite">Techrise Community</span></h1>
-    
-    <!-- Explore the Community Button with Blinking Light Effect -->
+    <h1 class="welcome-text">Welcome to Techrise Community</h1>
+
+    <!-- Registration Form -->
+    <form id="registrationForm">
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" required><br><br>
+      
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" required><br><br>
+      
+      <button type="submit">Submit</button>
+    </form>
+
+    <!-- Explore Button (Initially Disabled) -->
     <a href="community.html">
-      <button class="animated-btn animate__animated animate__fadeInUp blinking-btn">
-        Explore the Community
-      </button>
+      <button class="animated-btn blinking-btn" id="exploreBtn" disabled>Explore the Community</button>
     </a>
 
     <!-- Registration Link -->
-    <a class="registration-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdkexbZYDykcxebfVfnFgNJXB-sqCEf4ZUDgn3MmzSMtSH2qg/alreadyresponded"
-      target="_blank">Registration</a>
+    <a class="registration-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdkexbZYDykcxebfVfnFgNJXB-sqCEf4ZUDgn3MmzSMtSH2qg/alreadyresponded" target="_blank">Registration</a>
   </div>
+
+  <!-- JavaScript to Enable Explore Button -->
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent page reload
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      
+      if (name && email) {
+        document.getElementById("exploreBtn").disabled = false; // Enable explore button if the form is filled
+        alert("Thank you for registering! You can now explore the community.");
+      } else {
+        alert("Please fill out the form.");
+      }
+    });
+  </script>
 </body>
 </html>
