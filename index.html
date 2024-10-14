@@ -4,83 +4,135 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Login to Explore Techrise Community</title>
+  <title>Welcome to Techrise Community</title>
 
   <!-- Link to Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 
+  <!-- Link to Animate.css for animation effects -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <!-- Custom CSS -->
   <style>
     body, html {
       margin: 0;
       padding: 0;
       font-family: 'Poppins', sans-serif;
       height: 100%;
+      overflow: hidden;
+    }
+
+    /* Video Background Styling */
+    #bgVideo {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover; /* Ensures the video covers the screen */
+    }
+
+    /* Container Styling */
+    .container {
+      position: relative;
+      z-index: 1;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-color: #f4f4f4;
+      height: 100vh;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
     }
 
-    .login-container {
-      background-color: white;
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .login-container h1 {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
-    .login-container input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .login-container button {
-      width: 100%;
-      padding: 10px;
-      background-color: #0072ff;
+    .welcome-text {
+      font-size: 48px;
+      font-weight: bold;
       color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     }
 
-    .login-container button:hover {
-      background-color: #0056b3;
+    .animated-btn {
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #0072ff;
+      background-color: white;
+      border: none;
+      border-radius: 25px;
+      margin-top: 30px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 20px #0072ff; /* Initial glow */
+    }
+
+    .animated-btn:hover {
+      transform: scale(1.1);
+    }
+
+    /* Blinking Light Effect for the Button */
+    @keyframes blinking-light {
+      0% {
+        box-shadow: 0 0 20px #0072ff, 0 0 30px #0072ff, 0 0 40px #0072ff;
+        opacity: 1;
+      }
+      50% {
+        box-shadow: 0 0 5px #0072ff;
+        opacity: 0.5;
+      }
+      100% {
+        box-shadow: 0 0 20px #0072ff, 0 0 30px #0072ff, 0 0 40px #0072ff;
+        opacity: 1;
+      }
+    }
+
+    .blinking-btn {
+      animation: blinking-light 1.5s infinite ease-in-out; /* Smooth blinking light effect */
+    }
+
+    /* New Registration Link Styling */
+    .registration-link {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #0072ff; /* Link color */
+      text-decoration: underline; /* Underline to mimic a link */
+      transition: color 0.3s ease;
+    }
+
+    .registration-link:hover {
+      color: #0056b3; /* Darker color on hover */
+    }
+
+    /* Animation Effects */
+    .animate__animated {
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
     }
   </style>
 </head>
 <body>
+  <!-- Video Background -->
+  <video autoplay muted loop id="bgVideo">
+    <source src="video.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
 
-  <div class="login-container">
-    <h1>Login to Explore</h1>
-    <input type="email" id="emailInput" placeholder="Enter your registered email">
-    <button onclick="verifyEmail()">Submit</button>
-    <p id="errorMessage" style="color: red;"></p>
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Removed animation for movement -->
+    <h1 class="welcome-text">Welcome to <span class="animate__animated animate__pulse animate__infinite">Techrise Community</span></h1>
+    
+    <!-- Explore the Community Button with Blinking Light Effect -->
+    <a href="community.html">
+      <button class="animated-btn animate__animated animate__fadeInUp blinking-btn">
+        Explore the Community
+      </button>
+    </a>
+
+    <!-- Registration Link -->
+    <a class="registration-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdkexbZYDykcxebfVfnFgNJXB-sqCEf4ZUDgn3MmzSMtSH2qg/alreadyresponded"
+      target="_blank">Registration</a>
   </div>
-
-  <script>
-    // Example of an array of registered emails (this would come from your Google Form responses manually)
-    const registeredEmails = ['testuser1@gmail.com', 'testuser2@gmail.com']; // Replace with actual registered emails
-
-    function verifyEmail() {
-      const email = document.getElementById('emailInput').value;
-      const errorMessage = document.getElementById('errorMessage');
-
-      if (registeredEmails.includes(email)) {
-        // If the email is registered, allow access
-        window.location.href = 'community.html'; // Redirect to community page
-      } else {
-        // Show an error message if the email is not registered
-        errorMessage.textContent = 'Email not registered. Please register first.';
-      }
-    }
-  </script>
 </body>
 </html>
